@@ -1,4 +1,16 @@
 
+<div>
+    <form method="post">
+        <label>Product Name:</label>
+        <input type="text" value="" placeholder="name.." name="product_name" />
+        <input type="text" value="" placeholder="order code.." name="order_code" />
+        <input type="text" value="" placeholder="price.." name="price" />
+        <p>
+            <input type="submit" value="[submit]" />
+        </p>
+    </form>
+</div>
+
 <table class ="table-list">
 
     <tr>

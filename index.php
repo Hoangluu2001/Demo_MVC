@@ -15,13 +15,19 @@ $billController=new Billcontroller();
 <body>
 <a href="index.php?page=list-bill">Danh sach hoa don</a>
 <?php
-switch ($page){
+switch ($page) {
     case 'list-bill':
         $billController->index();
         break;
     case 'show-bill':
         $id = $_REQUEST['id'];
         $billController->show($id);
+        break;
+    case 'search-bill':
+        $product_name = isset($_REQUEST['product_name']) ? $_REQUEST['product_name'] : "";
+        $oder_code = isset($_REQUEST['order_code']) ? $_REQUEST['order_code'] : "";
+        $price = isset($_REQUEST['price']) ? $_REQUEST['price'] : "";
+        $billController->search($product_name, $oder_code, $price);
         break;
 }
 ?>

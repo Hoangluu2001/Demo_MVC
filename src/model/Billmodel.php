@@ -53,7 +53,37 @@ public function findById($id){
         return $stmt->fetchAll();
     }
 
+
+
+    public function find($product_name, $order_number, $price)
+    {
+        $sql = "select * from v_bill";
+
+        if (!empty($product_name) || !empty($order_number) || !empty($price))
+        {
+            $sql = "select * from v_bill where p.productName = :product_name or od.orderNumber =:order_number or p.buyPrice =:price ";
+        }
+
+        $stmt = $this->database->prepare($sql);
+        $stmt->bindParam(":product_name", $product_name);
+        $stmt->bindParam(":order_number", $order_number);
+        $stmt->bindParam(":price", $price);
+        $stmt->execute();
+
+//        var_dump($stmt->fetchAll());
+        return $stmt->fetchAll();
+    }
+
+
+
 public function updateStatus($id){
 
-}
+        $sql = "update orders SET status =:status where orderNumber =:id ";
+        $stmt = $this->database->prepare($sql);
+        $stmt->bindParam(":status", $status);
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+    }
+
+
 }
